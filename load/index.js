@@ -1,5 +1,13 @@
-function load(url, options = { method: 'GET', body: null, responseType: 'json' }) {
+function load(url, options) {
+    options.method = options.method || 'GET';
+    options.responseType = options.responseType || 'json';
+    options.body = options.body || null;
+
     return new Promise((resolve, reject) => {
+        if (options.signal) {
+            options.signal.addEventListener('abort', reject);
+        }
+
         const xhr = new XMLHttpRequest();
         xhr.open(options.method, url);
         xhr.responseType = options.responseType;
