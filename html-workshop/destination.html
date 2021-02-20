@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs</title>
+    <link rel="stylesheet" href="destination.css">
+</head>
+
+<body>
+    <div class="destination">
+        <input class="destination__radio" id="one" name="group" type="radio" checked>
+        <input class="destination__radio" id="two" name="group" type="radio">
+        <input class="destination__radio" id="three" name="group" type="radio">
+        <div class="tabs">
+            <label class="tabs__tab" id="one-tab" for="one"><img src="./img/tab1.svg" alt=""></label>
+            <label class="tabs__tab" id="two-tab" for="two"><img src="./img/tab2.svg" alt=""></label>
+            <label class="tabs__tab" id="three-tab" for="three"><img src="./img/tab3.svg" alt=""></label>
+        </div>
+        <div class="panels">
+            <div class="panels__panel" id="one-panel">
+                <div class="panels__panel_wrapper">
+                    <div class="panels__panel_left">
+                        <div class="panels__panel_left_title">My most favourite
+                            place in the world</div>
+                        <div class="panels__panel_left_reviews">
+                            <span class="dark">154</span>Reviews</div>
+                        <div class="panels__panel_left_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Maecenas a pulvinar ipsum.
+                            Aliquam sit amet iaculis dolor. Vivamus sed diam sollicitudin. </div>
+                        <div class="panels__panel_left_read" >Read more</div>
+                    </div>
+                    <div class="panels__panel_rignth">                        
+                        <img class="panels__panel_rignth_img" src="./img/photo.png" alt="">
+                        <img class="panels__panel_rignth_comment_img" src="./img/comment.svg" alt="">
+                        <div class="panels__panel_rignth_comment_text">752</div>
+                        <img class="panels__panel_rignth_like_img" src="./img/like.svg" alt="">
+                        <div class="panels__panel_rignth_like_text">2709</div>
+                        <div class="panels__panel_rignth_rectange"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panels__panel" id="two-panel">
+                <div class="panels__panel_itle">Tab #2</div>                
+            </div>
+            <div class="panels__panel" id="three-panel">
+                <div class="panels__panel_itle">Tab #3</div>               
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

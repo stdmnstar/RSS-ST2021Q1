@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 22" width="25" height="22">
+	<style>
+		tspan { white-space:pre }
+		.shp0 { fill: #ffffff } 
+	</style>
+	<g id="DESTINATION">
+		<path id="Forma 1 copy 9" class="shp0" d="M17.73 0.2C21.44 0.2 24.45 3.29 24.45 7.11C24.45 13.42 12.3 21.8 12.3 21.8C12.3 21.8 0.15 13.72 0.15 7.11C0.15 2.36 3.16 0.2 6.87 0.2C9.1 0.2 11.08 1.33 12.3 3.05C13.52 1.33 15.5 0.2 17.73 0.2Z" />
+	</g>
+</svg>
