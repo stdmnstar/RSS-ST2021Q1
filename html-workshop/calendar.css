@@ -1,0 +1,116 @@
+@font-face {
+    font-family: 'GothamSSm';
+    src: url('./fonts/Gotham Medium Regular.woff2') format('woff2'),
+        url('./fonts/Gotham Medium Regular.ttf') format('truetype'),
+        url('./fonts/GothamMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #d9d9d9;
+}
+
+.calendar {
+    margin: 0 auto;
+    overflow: hidden;
+    font-family: 'GothamSSm', sans-serif;
+    width: 346px;
+    height: 427px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.44);
+}
+
+.calendar__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 346px;
+    height: 65px;
+    background-color: #404a58;
+    padding: 0 37px;
+    color: #ffffff;
+}
+
+.calendar__header_text {
+    font-size: 17px;
+    line-height: 35px;
+    font-weight: 400;
+}
+
+.calendar__header_arrow {
+    width: 8px;
+    height: 12px;
+}
+
+.calendar__header_arrow:hover {
+    cursor: pointer;
+}
+
+.calendar__date {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
+    grid-gap: 4px;
+    padding: 13px 33px;
+}
+
+.calendar__day,
+.calendar__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 37px;
+    width: 37px;
+    font-size: 14px;
+    line-height: 36px;
+    color: #666666;
+}
+
+.calendar__day {
+    font-weight: 500;
+}
+
+.calendar__number_ather {
+    color: #c5c5c5;
+}
+
+.calendar__number_holiday {
+    color: #fb6362;
+}
+
+.calendar__number_current,
+.calendar__number:hover {
+    background-color: #fb6362;
+    color: #ffffff !important;
+    font-weight: 700;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.calendar__footer {
+    display: flex;
+    padding-top: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 60px;
+    border-radius: 3px;
+    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.55);
+    background-color: #fb6362;
+    color: #ffffff;
+}
+
+.calendar__button:hover {
+    cursor: pointer;
+}
