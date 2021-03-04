@@ -31,7 +31,7 @@ function EditForm({ thing, submitEditThing, cancelEditThing }) {
                 />
                 <button className="add-btn">Submit</button>
             </form>
-            <div className="cancel-btn" onClick={() => cancelEditThing()}>
+            <div className="cancel-btn" onClick={cancelEditThing}>
                 Cancel
              </div>
         </React.Fragment>

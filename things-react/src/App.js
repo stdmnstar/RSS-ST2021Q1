@@ -3,63 +3,33 @@ import { v4 as uuidv4 } from 'uuid';
 import AddForm from './components/AddForm';
 import EditForm from './components/EditForm';
 import Thing from './components/Thing';
+import { getAllThigsApi, addThingApi, editThingApi, removeThingApi } from './api';
 
 function App() {
     const [things, setThings] = useState([]);
     const [isShowEditInput, setIsShowEditInput] = useState(false);
     const [thing, setThing] = useState({});
-    const [update, setUpdate] = useState(false);
-    const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
-    useEffect(() => {
-        fetch('https://desolate-fortress-20112.herokuapp.com/api/v1/things')
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setIsLoaded(true);
-                    setThings(result);
-                    setUpdate(!update);
-                },
-                (error) => {
-                    setError(error);
-                }
-            )
-    }, [update]);
+    useEffect(async () => {
+        const result = await getAllThigsApi();
+        setIsLoaded(true);
+        setThings(result);
+    }, []);
 
-    if (!isLoaded) {
-        return <h3>Loading...</h3>;
-    };
+    const addThing = async (thingInput) => {
+        if (!thingInput) {
+            return
+        }
 
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    };
-
-    const addThing = (thingInput) => {
-        if (thingInput) {
-            const newItem = {
-                id: uuidv4(),
-                name: thingInput,
-            };
-
-            fetch('https://desolate-fortress-20112.herokuapp.com/api/v1/things', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
-                body: JSON.stringify(newItem)
-            }).then(res => res.json())
-                .then(
-                    (result) => {
-                        setIsLoaded(true);
-                        setUpdate(!update);
-                    },
-                    (error) => {
-                        setIsLoaded(true);
-                        setError(error);
-                    }
-                );
+        const newItem = {
+            id: uuidv4(),
+            name: thingInput,
         };
+
+        await addThingApi(newItem);
+        setIsLoaded(true);
+        setThings([...things, newItem]);
     };
 
     const editThing = (thing) => {
@@ -70,64 +40,32 @@ function App() {
         setIsShowEditInput(true);
     };
 
-    const submitEditThing = (name) => {
+    const submitEditThing = async (name) => {
         setIsShowEditInput(false);
-        if (name === thing.name) {
+        if (!name || (name === thing.name)) {
             return;
         }
 
-        if (name) {
-            let index = -1;
-            for (let i = 0; i < things.length; i++) {
-                if (things[i].id === thing.id) {
-                    index = i;
-                    break;
-                }
-            }
-
-            if (index > -1) {
-                const newItem = { ...thing, name };
-                fetch(`https://desolate-fortress-20112.herokuapp.com/api/v1/things/${thing.id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json;charset=utf-8'
-                    },
-                    body: JSON.stringify(newItem)
-                }).then(res => res.json())
-                    .then(
-                        (result) => {
-                            setIsLoaded(true);
-                            setUpdate(!update);
-                        },
-
-                        (error) => {
-                            setIsLoaded(true);
-                            setError(error);
-                        }
-                    );
-            };
-        };
+        const newItem = { ...thing, name };
+        await editThingApi(thing.id, newItem);
+        setIsLoaded(true);
+        const newThings = things.map((item) => item.id === thing.id ? newItem : item);        
+        setThings(newThings);
     };
 
     const cancelEditThing = () => {
         setIsShowEditInput(false);
     };
 
-    const removeThing = (id) => {
-        fetch(`https://desolate-fortress-20112.herokuapp.com/api/v1/things/${id}`, {
-            method: 'DELETE'
+    const removeThing = async (id) => {
+        await removeThingApi(id);
+        setIsLoaded(true);
+        const newThings = things.filter((item) => item.id !== id);       
+        setThings(newThings);
+    };
 
-        }).then(res => res.json())
-            .then(
-                (result) => {
-                    setIsLoaded(true);
-                    setUpdate(!update);
-                },
-                (error) => {
-                    setIsLoaded(true);
-                    setError(error);
-                }
-            );        
+    if (!isLoaded) {
+        return <h3>Loading...</h3>;
     };
 
     return (

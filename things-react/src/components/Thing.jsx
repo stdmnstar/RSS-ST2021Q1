@@ -1,13 +1,14 @@
 function Thing({ thing, editThing, removeThing }) {
+    const {name, id} = thing;
     return (
         <div className="item-thing">
             <div className="item-text">
-                {thing.name}
+                {name}
             </div>
             <div className="edit-btn" onClick={() => editThing(thing)}>
                 Edit
             </div>
-            <div className="delete-btn" onClick={() => removeThing(thing.id)}>
+            <div className="delete-btn" onClick={() => removeThing(id)}>
                 Del
             </div>
         </div>
