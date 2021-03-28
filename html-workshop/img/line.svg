@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 703 1" width="703" height="1">
+	<style>
+		tspan { white-space:pre }
+		.shp0 { fill: #eaeaea } 
+	</style>
+	<g id="BAR GRAPH">
+		<g id="LINES">
+			<path id="Shape 4 copy 7" class="shp0" d="M0 1L0 0L703 0L703 1L0 1Z" />
+		</g>
+	</g>
+</svg>
